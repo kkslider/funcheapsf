@@ -1,3 +1,5 @@
+'use strict';
+
 (function() {
     google.maps.event.addDomListener(window, 'load', GoogleMaps.initJSON);
 

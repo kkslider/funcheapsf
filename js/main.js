@@ -1,4 +1,6 @@
-var GoogleMaps = (function () {
+'use strict';
+
+var GoogleMaps = function () {
     var mapCanvas = document.getElementById('map_canvas');
     var mapOptions = {
         center: new google.maps.LatLng(37.606236, -122.241821),
@@ -28,4 +30,4 @@ var GoogleMaps = (function () {
             window.locations = JSON.parse(response);
         })
     };
-})();
+}();
