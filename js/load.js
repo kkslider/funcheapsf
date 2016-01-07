@@ -1,29 +1,34 @@
 'use strict';
 
 (function() {
-    GoogleMaps.loadJSON(function(response) {
-        GoogleMaps.locations = JSON.parse(response);
-        for (var i = 0; i < GoogleMaps.locations.length; i++) {
-            (function(n) {
-                console.log(n);
-                setTimeout(function() {
-                    geocode(n);
-                }, 3000);
-            }(i));
-        }
-    });
-
-    var geocode = function(i) {
-        GoogleMaps.geocoder.geocode({'address': GoogleMaps.locations[i].address}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                var marker = new google.maps.Marker({
-                    map: GoogleMaps.map,
-                    position: results[0].geometry.location
-                });
-                console.log(results[0].geometry.location);
-            } else {
-                console.log('Geocode was not successful for the following reason: ' + status);
+    var getEvents = function(callback) {
+        var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType('application/json');
+        xobj.open('GET', 'http://localhost:8000/funcheapsf/items.json', true);
+        xobj.onreadystatechange = function() {
+            if (xobj.readyState == 4 && xobj.status == '200') {
+                var events = xobj.responseText;
+                callback(JSON.parse(events));
             }
+        };
+        xobj.send(null);
+    };
+
+    var addMarkers = function(events, i) {
+        if (events.length - 1 === i) {
+            return;
+        }
+
+        var e = events[i];
+        GoogleMaps.geocode(e.address, function(coordinates) {
+            GoogleMaps.addMarker(coordinates);
+            setTimeout(function(){ // recursion works because it's called inside the setTimeout function
+                addMarkers(events, ++i);
+            }, 500);
         });
     };
+
+    getEvents(function(events) {
+        addMarkers(events, 0);
+    });
 })();
