@@ -1,0 +1,16 @@
+# EditorConfig is awesome: http://EditorConfig.org
+# To get the most out of this configuration file, download the plugin for your editor: http://editorconfig.org/#download
+
+
+# top-most EditorConfig file
+root = true
+
+# Common settings
+[*]
+trim_trailing_whitespace = true
+end_of_line = lf
+charset = utf-8
+indent_style = space
+indent_size = 4
+tab_size = 2
+insert_final_newline = true
