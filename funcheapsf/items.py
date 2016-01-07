@@ -9,6 +9,10 @@ import scrapy
 
 
 class FuncheapsfItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    event = scrapy.Field()
+    venue = scrapy.Field()
+    address = scrapy.Field()
+    day = scrapy.Field()
+    start_time = scrapy.Field()
+    end_time = scrapy.Field()
+    cost = scrapy.Field()
