@@ -21,7 +21,8 @@
 
         var e = events[i];
         GoogleMaps.geocode(e.address, function(coordinates) {
-            GoogleMaps.addMarker(coordinates);
+            var marker = GoogleMaps.addMarker(coordinates);
+            GoogleMaps.addInfoWindow(marker, e);
             setTimeout(function(){ // recursion works because it's called inside the setTimeout function
                 addMarkers(events, ++i);
             }, 500);
