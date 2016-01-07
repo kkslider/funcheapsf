@@ -25,9 +25,6 @@ var GoogleMaps = function () {
 
         geocoder: new google.maps.Geocoder(),
 
-        initJSON: loadJSON(function(response) {
-            // TODO: Don't attach to window, temporary
-            window.locations = JSON.parse(response);
-        })
+        loadJSON: loadJSON
     };
 }();
