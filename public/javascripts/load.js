@@ -4,7 +4,7 @@
     var getEvents = function(callback) {
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType('application/json');
-        xobj.open('GET', 'http://localhost:8000/funcheapsf/items.json', true);
+        xobj.open('GET', '../scrapy/items.json', true);
         xobj.onreadystatechange = function() {
             if (xobj.readyState == 4 && xobj.status == '200') {
                 var events = xobj.responseText;

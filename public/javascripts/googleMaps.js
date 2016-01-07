@@ -1,5 +1,5 @@
+/* exported GoogleMaps */
 'use strict';
-// cmd shift j for jshint
 
 var GoogleMaps = (function () {
     var mapCanvas = document.getElementById('map_canvas');
@@ -25,15 +25,43 @@ var GoogleMaps = (function () {
     };
 
     var addMarker = function(locationCoordinates) {
-        new google.maps.Marker({
+        var marker = new google.maps.Marker({
             map: map,
             position: locationCoordinates
+        });
+
+        return marker;
+    };
+
+    var infoWindow = new google.maps.InfoWindow({
+        maxWidth: 600
+    });
+
+    var addInfoWindow = function(marker, e) {
+        google.maps.event.addListener(marker, 'click', function() {
+            console.log(e);
+            var contentString =
+            '<div>' +
+                '<h2>Event: ' + e.event + '</h2>' +
+                '<ul>' +
+                    '<li>Address: ' + e.address + '</li>' +
+                    '<li>Venue: ' + e.venue + '</li>' +
+                    '<li>Day: ' + e.day + '</li>' +
+                    '<li>Start time: ' + e.start_time + '</li>' +
+                    '<li>End time: ' + e.end_time + '</li>' +
+                    '<li>Cost: ' + e.cost + '</li>' +
+                '</ul>' +
+            '</div>';
+
+            infoWindow.setContent(contentString);
+            infoWindow.open(map, marker);
         });
     };
 
     return {
         map: map,
         geocode: geocode,
-        addMarker: addMarker
+        addMarker: addMarker,
+        addInfoWindow: addInfoWindow
     };
 })();
