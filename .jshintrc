@@ -1,0 +1,8 @@
+{
+    "quotmark": "single",
+    "globals": {
+        "google": true,
+        "console": true,
+        "GoogleMaps": true
+    }
+}
