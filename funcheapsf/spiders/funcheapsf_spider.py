@@ -1,5 +1,5 @@
 from scrapy.spider import Spider
-from scrapy.spider import Selector
+from scrapy.selector import Selector
 
 class FunCheapSFSpider(Spider):
     name = "funcheapsf"
@@ -11,5 +11,10 @@ class FunCheapSFSpider(Spider):
 
     def parse(self, response):
         sel = Selector(response)
-        sites = sel.css('')
-        sel.css('div.clearfloat:not(.recurring)').css('a[href="http://sf.funcheap.com/world-championship-heavyweight-pumpkin-weighoff/"]')
+        link_elements = sel.css('div#content > div.clearfloat:not(.recurring) div.tanbox.left span a').xpath('.//@href').extract()
+        filename = 'crawled_info'
+        with open(filename, 'wb') as f:
+            for link in link_elements:
+                f.write(link)
+
+    # sel.css('div#content > div.clearfloat:not(.recurring) div.tanbox.left:first-child')
