@@ -5,14 +5,14 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy.item import Item, Field
 
 
-class FuncheapsfItem(scrapy.Item):
-    event = scrapy.Field()
-    venue = scrapy.Field()
-    address = scrapy.Field()
-    day = scrapy.Field()
-    start_time = scrapy.Field()
-    end_time = scrapy.Field()
-    cost = scrapy.Field()
+class FuncheapsfItem(Item):
+    event = Field()
+    venue = Field()
+    address = Field()
+    day = Field()
+    start_time = Field()
+    end_time = Field()
+    cost = Field()
