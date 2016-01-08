@@ -18,6 +18,7 @@ queuelib==1.4.2
 requests==2.8.0
 scrapyd==1.1.0
 scrapyd-client==1.0.1
+scrapy-heroku==0.7.1
 service-identity==14.0.0
 singledispatch==3.4.0.3
 six==1.10.0
