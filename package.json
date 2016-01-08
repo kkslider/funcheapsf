@@ -2,5 +2,8 @@
   "name": "funcheapsf",
   "version": "0.7.0",
   "description": "Serves a Google Maps page with locations of the current day's events parsed from sf.funcheap.com",
-  "author": "Benjamin Lee"
+  "author": "Benjamin Lee",
+  "engines": {
+    "node": "0.12.4"
+  }
 }
