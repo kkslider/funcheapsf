@@ -5,5 +5,8 @@
   "author": "Benjamin Lee",
   "engines": {
     "node": "0.12.4"
+  },
+  "dependencies": {
+    "node-static": "0.7.7"
   }
 }
