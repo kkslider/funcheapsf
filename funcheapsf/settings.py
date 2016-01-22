@@ -13,7 +13,8 @@ BOT_NAME = 'funcheapsf'
 
 SPIDER_MODULES = ['funcheapsf.spiders']
 NEWSPIDER_MODULE = 'funcheapsf.spiders'
-
+FEED_FORMAT = 'json'
+FEED_URI = 'public/scrapy/items.json'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'funcheapsf (+http://www.yourdomain.com)'
