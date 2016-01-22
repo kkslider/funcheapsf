@@ -1,1 +1,1 @@
-web: scrapyd
+web: node index.js
