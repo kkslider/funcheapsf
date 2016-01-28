@@ -17,7 +17,6 @@ var GoogleMaps = (function () {
             if (status == google.maps.GeocoderStatus.OK) {
                 var location = results[0].geometry.location;
                 callback(location);
-                console.log(location);
             } else {
                 console.log('Geocode was not successful for the following reason: ' + status);
             }
@@ -39,7 +38,6 @@ var GoogleMaps = (function () {
 
     var addInfoWindow = function(marker, e) {
         google.maps.event.addListener(marker, 'click', function() {
-            console.log(e);
             var contentString =
             '<div>' +
                 '<h2>Event: ' + e.event + '</h2>' +
